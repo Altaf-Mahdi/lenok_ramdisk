@@ -106,6 +106,10 @@ on boot
 on property:sys.boot_completed=1
     write /sys/class/power_supply/battery/charging_enabled 1
 
+    write /sys/module/msm_thermal/core_control/enabled 0
+    start mpdecision
+    write /sys/module/msm_thermal/core_control/enabled 1
+
 on property:sys.cw_home_ready=1
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/system/cpu/cpu1/online 0
@@ -135,6 +139,10 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
+
+service mpdecision /system/bin/mpdecision --avg_comp
+    user root
+    disabled
 
 service custom_script /system/bin/sh /sbin/init.custom.sh
     seclabel u:r:init:s0

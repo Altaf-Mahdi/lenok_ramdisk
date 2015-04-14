@@ -11,3 +11,21 @@ chmod 755 /system/xbin/busybox
 mount -o ro,remount /system
 
 fi
+
+# Copy mpdecision binary in system/bin
+if [ ! -f /system/bin/mpdecision ];
+then
+
+mount -o rw,remount /system
+
+cp /sbin/mpdecision /system/bin/
+chmod 0755 /system/bin/mpdecision
+mount -o ro,remount /system
+
+fi
+
+mpdecision --avg_comp &
+
+mount -o remount rw /
+chmod 755 /sbin
+mount -o remount ro /
