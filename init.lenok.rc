@@ -6,12 +6,17 @@ on early-init
     chmod 0755 /sys/kernel/debug
 
 on init
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "performance"
+
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
-   # Support legacy paths
-   symlink /sdcard /mnt/sdcard
-   symlink /sdcard /storage/sdcard0
+    # Support legacy paths
+    symlink /sdcard /mnt/sdcard
+    symlink /sdcard /storage/sdcard0
 
 on fs
     mount_all /fstab.lenok
@@ -55,11 +60,6 @@ on post-fs-data
     write /sys/module/lpm_levels/system/cpu2/standalone_pc/idle_enabled 1
     write /sys/module/lpm_levels/system/cpu3/standalone_pc/idle_enabled 1
     write /sys/module/lpm_levels/system/cpu0/pc/idle_enabled 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
-    write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
-    write /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy 1
-    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor 4
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
 
     setprop vold.post_fs_data_done 1
