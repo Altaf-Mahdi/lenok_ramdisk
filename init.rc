@@ -10,6 +10,7 @@ import /init.${ro.hardware}.rc
 import /init.usb.configfs.rc
 import /init.${ro.zygote}.rc
 
+
 on early-init
     # Set init and its forked children's oom_adj.
     write /proc/1/oom_score_adj -1000
@@ -41,6 +42,9 @@ on init
 
     # Link /vendor to /system/vendor for devices without a vendor partition.
     symlink /system/vendor /vendor
+
+    # Create mount point for SuperSU
+    mkdir /su 0755 root root
 
     # Mount cgroup mount point for cpu accounting
     mount cgroup none /acct cpuacct
@@ -491,6 +495,10 @@ on post-fs-data
     # Set indication (checked by vold) that we have finished this action
     #setprop vold.post_fs_data_done 1
 
+    # earliest possible SuperSU daemon launch, with fallback to service
+    exec /sbin/launch_daemonsu.sh post-fs-data
+    exec u:r:init:s0 root root -- /sbin/launch_daemonsu.sh post-fs-data
+
 on boot
     # basic network init
     ifup lo
@@ -667,3 +675,17 @@ on property:ro.debuggable=1
 service flash_recovery /system/bin/install-recovery.sh
     class main
     oneshot
+
+# mount /data/su.img to /su
+on property:sukernel.mount=1
+    mount ext4 loop@/data/su.img /su noatime
+
+# launch SuperSU daemon
+service daemonsu /sbin/launch_daemonsu.sh service
+    class late_start
+    user root
+    seclabel u:r:init:s0
+    oneshot
+
+# SuperSU:PATCH:277
+# SuperSU:STOCK:a872cdb5347f4f4788d153c8a05eec87a9035d1a
