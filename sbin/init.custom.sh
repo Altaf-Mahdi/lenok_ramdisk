@@ -26,6 +26,10 @@ fi
 
 mpdecision --avg_comp &
 
+# Max freq back to 1190400
+echo 1190400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+echo 300000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+
 mount -o remount rw /
 chmod 755 /sbin
 mount -o remount ro /
