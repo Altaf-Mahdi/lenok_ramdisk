@@ -135,3 +135,10 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
+
+service custom_script /system/bin/sh /sbin/init.custom.sh
+    seclabel u:r:init:s0
+    class late_start
+    user root
+    group root
+    oneshot
