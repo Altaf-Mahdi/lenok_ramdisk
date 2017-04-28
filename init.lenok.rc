@@ -107,7 +107,7 @@ on boot
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor performance
 
     # Set display alive check interval
-    write /sys/module/mdss_dsi/parameters/interval 1000
+    write /sys/module/mdss_dsi/parameters/interval 2000
 
     # Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
