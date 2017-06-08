@@ -155,7 +155,7 @@ com.google.android.clockwork.home.proxy.IClockworkProxyNativeService    u:object
 dream_ambient                                                           u:object_r:system_app_service:s0
 activity_ambient                                                        u:object_r:system_app_service:s0
 ThermalObserver                                                         u:object_r:ThermalObserver_service:s0
-WearBluetoothService                                                    u:object_r:WearBluetoothService_service:s0
 WearConnectivityService                                                 u:object_r:WearConnectivityService_service:s0
+WearDisplayService                                                      u:object_r:WearDisplayService_service:s0
 #line 1 "out/target/product/lenok/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 

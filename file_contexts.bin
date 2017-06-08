@@ -332,6 +332,7 @@
 /dev/ttyHS99 u:object_r:hci_attach_dev:s0
 /dev/ttyHSL0 u:object_r:tty_device:s0
 /dev/kgsl-3d0 u:object_r:gpu_device:s0
+/dev/block/zram0 u:object_r:swap_block_device:s0
 /dev/smd_sns_dsps u:object_r:sensors_device:s0
 /dev/smd_sns_adsp u:object_r:sensors_device:s0
 /system/bin/sysproxy u:object_r:sysproxy_exec:s0
@@ -343,6 +344,7 @@
 /system/bin/ClockworkProxy u:object_r:clockwork_proxy_exec:s0
 /system/bin/subsystem_ramdump u:object_r:ssr_exec:s0
 /dev/socket/sensor_ctl_socket u:object_r:sensors_socket:s0
+/sys/kernel/debug/msm_subsys/modem u:object_r:debugfs_modem:s0
 /dev/block/platform/msm_sdcc\.1/by-name/boot u:object_r:boot_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/cache u:object_r:cache_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/persist u:object_r:persist_block_device:s0

@@ -43,9 +43,9 @@ config.disable_cameraservice=true
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=Tue Mar 14 20:00:03 UTC 2017
-ro.bootimage.build.date.utc=1489521603
-ro.bootimage.build.fingerprint=lge/lenok/lenok:7.1.1/NXG47C/3811204:user/release-keys
+ro.bootimage.build.date=Mon May 15 23:54:03 UTC 2017
+ro.bootimage.build.date.utc=1494892443
+ro.bootimage.build.fingerprint=lge/lenok/lenok:7.1.1/NXH19X/4010769:user/release-keys
 persist.sys.usb.config=none
 ro.sys.sdcardfs=true
 
