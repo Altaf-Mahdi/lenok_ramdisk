@@ -22,11 +22,6 @@ if [ `mount | grep " /data " | grep "tmpfs" >/dev/null 2>&1; echo $?` -eq 0 ]; t
   exit
 fi
 
-if [ ! -f /data/su.img ];
-then
-unzip /sbin/su.zip -d /data/
-fi
-
 if [ `cat /proc/mounts | grep /su >/dev/null 2>&1; echo $?` -eq 0 ]; then
   if [ -d "/su/bin" ]; then
     if [ `ps | grep -v "launch_daemonsu.sh" | grep "daemonsu" >/dev/null 2>&1; echo $?` -eq 0 ]; then

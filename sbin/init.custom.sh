@@ -33,6 +33,12 @@ echo 300000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 # Increase vibration duration from 20ms to 100ms
 echo 100 > /sys/class/timed_output/vibrator/driving_ms
 
+# Copy su.img to data
+if [ ! -f /data/su.img ];
+then
+unzip /sbin/su.zip -d /data/
+fi
+
 mount -o remount rw /
 chmod 755 /sbin
 mount -o remount ro /
