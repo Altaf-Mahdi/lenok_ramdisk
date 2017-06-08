@@ -30,11 +30,6 @@ mpdecision --avg_comp &
 echo 1190400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 echo 300000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
-# Set cpufreq governor and max freq 320mhz for KGSL
-echo cpufreq > /sys/class/kgsl/kgsl-3d0/devfreq/governor
-echo 1000 > /sys/class/kgsl/kgsl-3d0/devfreq/cpufreq/timeout
-echo 320000000 > /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
-
 # Increase vibration duration from 20ms to 100ms
 echo 100 > /sys/class/timed_output/vibrator/driving_ms
 
